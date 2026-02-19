@@ -4,3 +4,6 @@
 [submodule "malasfetch"]
         path = malasfetch
         url = https://github.com/broman0x/malasfetch.git
+[submodule "gamelaneka"]
+	path = gamelaneka
+	url = https://github.com/dendik-creation/gamelaneka
