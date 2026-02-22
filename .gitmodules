@@ -82,3 +82,6 @@
 [submodule "pixtify"]
 	path = pixtify
 	url = https://github.com/pavelc4/pixtify.git
+[submodule "aether-tg-bot"]
+	path = aether-tg-bot
+	url = https://github.com/pavelc4/aether-tg-bot.git
