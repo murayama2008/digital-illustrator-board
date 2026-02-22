@@ -1,13 +1,33 @@
+import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faWallet, faMoneyBillTransfer, faSkull } from '@fortawesome/free-solid-svg-icons';
+import { 
+  faWallet, faMoneyBillTransfer, faSkull, 
+  faTimes, faCircleExclamation, faTerminal 
+} from '@fortawesome/free-solid-svg-icons';
 
 export default function FintechSection() {
+  const [popup, setPopup] = useState({ isOpen: false, title: '', message: '', type: '' });
+
   const handleConvertPahala = () => {
-    alert("SYSTEM ERROR: Server Lauhul Mahfudz sedang maintenance tarawih. Silakan coba lagi setelah Lebaran!");
+    setPopup({
+      isOpen: true,
+      title: 'SYSTEM ERROR',
+      message: 'Server Lauhul Mahfudz sedang maintenance tarawih. Silakan coba lagi setelah Lebaran!',
+      type: 'error'
+    });
   };
 
   const handleConvertDosa = () => {
-    alert("Hello World!");
+    setPopup({
+      isOpen: true,
+      title: 'Runtime Exception',
+      message: '> Hello World!',
+      type: 'terminal'
+    });
+  };
+
+  const closePopup = () => {
+    setPopup({ ...popup, isOpen: false });
   };
 
   return (
@@ -30,6 +50,33 @@ export default function FintechSection() {
           <FontAwesomeIcon icon={faSkull} /> Konversi Dosa ke Saldo
         </button>
       </div>
+
+      {popup.isOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-900/40 backdrop-blur-sm transition-all">
+          <div className="bg-white rounded-xl shadow-2xl w-full max-w-sm overflow-hidden transform scale-100">
+            <div className={`p-4 text-white flex justify-between items-center ${popup.type === 'error' ? 'bg-rose-600' : 'bg-gray-900'}`}>
+              <h4 className="font-bold text-sm flex items-center gap-2">
+                <FontAwesomeIcon icon={popup.type === 'error' ? faCircleExclamation : faTerminal} />
+                {popup.title}
+              </h4>
+              <button onClick={closePopup} className="text-white/70 hover:text-white transition-colors">
+                <FontAwesomeIcon icon={faTimes} />
+              </button>
+            </div>
+            <div className="p-6 text-center">
+              <p className={`text-sm ${popup.type === 'terminal' ? 'font-mono text-gray-800 font-semibold text-lg' : 'text-gray-600'}`}>
+                {popup.message}
+              </p>
+              <button
+                onClick={closePopup}
+                className="mt-6 w-full py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 text-sm font-semibold rounded-md transition-colors"
+              >
+                Tutup
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
