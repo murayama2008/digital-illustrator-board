@@ -94,3 +94,6 @@
 [submodule "floodzy"]
 	path = floodzy
 	url = https://github.com/MattYudha/floodzy.git
+[submodule "yet-another-slighty-cooler-to-do-list-app"]
+	path = yet-another-slighty-cooler-to-do-list-app
+	url = https://github.com/x1nx3r/yet-another-slightly-cooler-to-do-app-you-migh-not-use-anyway.git
