@@ -14,7 +14,7 @@ Aplikasi menggambar sederhana memakai Python Tkinter
 
 Install dependency:
 
-pip install -r requirements.txt
+pip install opencv-python mediapipe customtkinter pillow numpy
 
 Jalankan program:
 
